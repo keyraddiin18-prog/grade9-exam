@@ -1,0 +1,1341 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Grade 9 Smart Students - Online Exam</title><style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eef3f8;
+    color:#222;
+}
+
+header{
+    background:#1769aa;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+}
+
+header h1{
+    margin:0;
+    font-size:25px;
+}
+
+header p{
+    margin:8px 0 0;
+}
+
+.container{
+    width:94%;
+    max-width:900px;
+    margin:25px auto;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    margin-bottom:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+input{
+    width:100%;
+    padding:13px;
+    margin:7px 0 15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+input[type="radio"]{
+    width:auto;
+    margin:0 8px 0 0;
+}
+
+button{
+    border:0;
+    padding:13px 20px;
+    border-radius:8px;
+    background:#1769aa;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0e4f80;
+}
+
+.hidden{
+    display:none;
+}
+
+.question{
+    background:#f9fbfd;
+    border:1px solid #ddd;
+    padding:15px;
+    margin:15px 0;
+    border-radius:10px;
+}
+
+.option{
+    display:block;
+    padding:10px;
+    margin:5px 0;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+.option:hover{
+    background:#eef5fb;
+}
+
+.result{
+    text-align:center;
+}
+
+.score{
+    font-size:30px;
+    font-weight:bold;
+    margin:15px;
+}
+
+.qualified{
+    color:green;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.notqualified{
+    color:red;
+    font-size:24px;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#1769aa;
+    color:white;
+}
+
+.error{
+    color:red;
+    font-weight:bold;
+}
+
+.info{
+    background:#e8f4ff;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff3cd;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.submit-btn{
+    width:100%;
+    background:#198754;
+}
+
+.submit-btn:hover{
+    background:#146c43;
+}
+
+.restart-btn{
+    background:#6c757d;
+    margin-top:15px;
+}
+
+.unanswered{
+    color:#d39e00;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:21px;
+    }
+
+    .card{
+        padding:17px;
+    }
+
+    .question{
+        padding:12px;
+    }
+
+    table{
+        font-size:14px;
+    }
+}
+</style></head><body><header>
+    <h1>🎓 GRADE 9 SMART STUDENTS</h1>
+    <p>📝 Qormaata Seensaa (Entrance Examination)</p>
+    <p>🏫 KEYRADDIIN SECONDARY SCHOOL</p>
+    <p>📍 Location: Telegram</p>
+</header><div class="container"><!-- =========================
+     REGISTRATION PAGE
+========================= --><div id="registrationPage" class="card"><h2>👤 Student Registration</h2>
+
+<div class="info">
+    Qormaata jalqabuuf Full Name, Registration Number fi Exam Code galchi.
+</div>
+
+<label>👤 Full Name</label>
+<input
+    id="studentName"
+    type="text"
+    placeholder="Enter your full name"
+>
+
+<label>🆔 Registration Number</label>
+<input
+    id="registrationNumber"
+    type="text"
+    placeholder="Example: G9SS001"
+>
+
+<label>🔐 Exam Code</label>
+<input
+    id="examCode"
+    type="text"
+    placeholder="Enter exam code"
+>
+
+<button onclick="startExam()">
+    🚀 START EXAM
+</button>
+
+<p id="registrationError" class="error"></p>
+
+</div><!-- =========================
+     EXAM PAGE
+========================= --><div id="examPage" class="hidden"><div class="card">
+
+    <h2>📝 Online Entrance Examination</h2>
+
+    <p>
+        <strong>Student:</strong>
+        <span id="displayName"></span>
+    </p>
+
+    <p>
+        <strong>Registration:</strong>
+        <span id="displayRegistration"></span>
+    </p>
+
+    <p>
+        <strong>Total Questions:</strong> 80
+    </p>
+
+    <div class="warning">
+        ⚠️ Qormaata erga submit gootee booda deebitee sirreessuu hin dandeessu.
+    </div>
+
+</div>
+
+
+<!-- MATHEMATICS -->
+
+<div class="card">
+
+    <h2>📐 Mathematics — 20 Questions</h2>
+
+    <div id="mathQuestions"></div>
+
+</div>
+
+
+<!-- SCIENCE -->
+
+<div class="card">
+
+    <h2>🔬 General Science — 20 Questions</h2>
+
+    <div id="scienceQuestions"></div>
+
+</div>
+
+
+<!-- OROMO -->
+
+<div class="card">
+
+    <h2>🟢 Afaan Oromoo — 20 Questions</h2>
+
+    <div id="oromoQuestions"></div>
+
+</div>
+
+
+<!-- ENGLISH -->
+
+<div class="card">
+
+    <h2>🔵 English — 20 Questions</h2>
+
+    <div id="englishQuestions"></div>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<div class="card">
+
+    <button
+        class="submit-btn"
+        type="button"
+        onclick="submitExam()"
+    >
+        📊 SUBMIT EXAM
+    </button>
+
+</div>
+
+</div><!-- =========================
+     RESULT PAGE
+========================= --><div id="resultPage" class="hidden"><div class="card result">
+
+    <h2>🎓 EXAM RESULT</h2>
+
+    <p>
+        👤 <strong id="resultName"></strong>
+    </p>
+
+    <p>
+        🆔 <strong id="resultRegistration"></strong>
+    </p>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Subject</th>
+                <th>Score</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>📐 Mathematics</td>
+                <td id="mathScore"></td>
+            </tr>
+
+            <tr>
+                <td>🔬 General Science</td>
+                <td id="scienceScore"></td>
+            </tr>
+
+            <tr>
+                <td>🟢 Afaan Oromoo</td>
+                <td id="oromoScore"></td>
+            </tr>
+
+            <tr>
+                <td>🔵 English</td>
+                <td id="englishScore"></td>
+            </tr>
+
+            <tr>
+                <td><strong>Total</strong></td>
+                <td id="totalScore"></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <div class="score">
+
+        <span id="percentage"></span>%
+
+    </div>
+
+
+    <div id="status"></div>
+
+
+    <button
+        class="restart-btn"
+        onclick="location.reload()"
+    >
+        🔄 START NEW EXAM
+    </button>
+
+</div>
+
+</div></div><script>
+
+/* ==========================================
+   EXAM CODE
+========================================== */
+
+const CORRECT_EXAM_CODE = "G9-2026";
+
+
+/* ==========================================
+   PASS MARK
+========================================== */
+
+const PASS_MARK = 64;
+
+
+/* ==========================================
+   QUESTIONS
+========================================== */
+
+
+/* ---------- MATHEMATICS ---------- */
+
+const mathQuestions = [
+
+{
+q:"Tuutni furmaata |4x-8| =16 kam ta'a?",
+a:["{2,6}","{-2,6}","{2,-6}","{-2,-6}"]
+},
+
+{
+q:"Rog afreen cimdii rogoota waliif fuullee ta'an tokko qofti waltarree ta'anii ___ jedhama.",
+a:["Paraleeloogiraamii","Tiraappiziyeemii","Rogsadee","Kaayitii"]
+},
+
+{
+q:"Gaaffii 60 keessaa 1/4 dhugaa ykn soba yoo ta'e gaaffiin akaakuu biroo meeqa ta'a?",
+a:["45","15","40","25"]
+},
+
+{
+q:"∆ABC ~ ∆DEF yoo ta'e, kan sirrii hin taane kamii?",
+a:["AB = DE","AC = DF","BC = EF","AB/DE = AC/BC"]
+},
+
+{
+q:"Kanneen armaan gadii keessaa lakkoofsa intiijarii kan ta'e kami?",
+a:["2.3","-2.5","-15","3.7"]
+},
+
+{
+q:"∆ABC ~ ∆DEF, AB=4cm fi DE=12cm yoo ta'e reeshoon bal'ina ∆ABC fi ∆DEF meeqa?",
+a:["1/3","1/9","1","3"]
+},
+
+{
+q:"Kanneen armaan gadii keessaa kamtu rog-baay'ee ta'uu hin dandeenye?",
+a:["Rog-sadee","Rog-afree","Geengoo","Rog-kurnee"]
+},
+
+{
+q:"Yoo N={1,2,3,...}, W={0,1,2,...} fi Z={...,-2,-1,0,1,2,...} ta'an kan sirrii ta'e kamii?",
+a:["N ⊂ Z ⊂ W","W ⊂ Z ⊂ N","Z ⊂ W ⊂ N","N ⊂ W ⊂ Z"]
+},
+
+{
+q:"Reeshoo 6:9 = 10:y keessatti gatiin y meeqa?",
+a:["90","18","15","6"]
+},
+
+{
+q:"Kanneen armaan gadii keessa kuwaadirilaateraalii kan ta'e kamii?",
+a:["Rog-shanee","Reektangilii","Rog-kurnee","Rog-sadee"]
+},
+
+{
+q:"Tuqaan (9,-5) qarxii meeqaffaa keessatti argama?",
+a:["IV","II","I","III"]
+},
+
+{
+q:"Kanneen armaan gadii keessaa isa kamtu kiyuubii sirrii miti?",
+a:["400","343","512000","8/27"]
+},
+
+{
+q:"HWG 12m fi 8m kan ta'e kami?",
+a:["1","6m","4m","20m"]
+},
+
+{
+q:"3[4x-(2x-5)] karaa salphaa ta'een yoo ibsinu?",
+a:["6x+15","10x-5","4x-5","3-5"]
+},
+
+{
+q:"Carraan ta'umsaa ta'ii shakkii tokko malee ta'uu danda'anii hammamii?",
+a:["0","1","2","3"]
+},
+
+{
+q:"Yoo b'n hundee fi h'n olee ta'e formulaa bal'ina rog-sadee kofa sirrii kami?",
+a:["A=½bh","A=bh","A=2(b+h)","A=½(b+h)"]
+},
+
+{
+q:"(-2×-1)×4 ___ -2×(-1×4) keessatti mallattoon sirrii kami?",
+a:["<",">","=","≥"]
+},
+
+{
+q:"-17-(-19)=___",
+a:["2","-36","20","-2"]
+},
+
+{
+q:"Ida'amni safara kofoota keessoo rogsadee tokkoo meeqa?",
+a:["180°","90°","160°","80°"]
+},
+
+{
+q:"Ida'amni pozativii walitti aanan sadii yoo 18 ta'e, isa xiqqaa barbaadi.",
+a:["5","6","7","21"]
+}
+
+];
+
+
+/* ---------- GENERAL SCIENCE ---------- */
+
+const scienceQuestions = [
+
+{
+q:"Damee saayinsii uumamaa kan caasaa, amalootaa fi jijjiiramoota maatarii qo'atu kami?",
+a:["Baayoloojii","Keemistirii","Fiiziksii","Baayooteeknooloojii"]
+},
+
+{
+q:"Saayintistiin yeroo jalqabaatiif ampuulii tolche eenyu?",
+a:["Mikaa'el Faaradaay","Albert Anestaayin","Toomaas Edisan","Joon Daltan"]
+},
+
+{
+q:"Meeshaalee mana yaalii keessaa baakteeriyaan keessatti horsiifamu kami?",
+a:["Biikarii","Ujummoo yaalii","Peetiriidishii","Filaaskii"]
+},
+
+{
+q:"Naamuusa mana yaalii kan ta'e kami?",
+a:[
+"Bishaan asiidii irratti naquun dhorkaadha",
+"Mana yaalii keessatti kophaa yaalii hojjechuu dhiisuu",
+"Eeyyama barsiisaan ala mana yaalii seenuu dhiisuu",
+"Hunduu deebiidha"
+]
+},
+
+{
+q:"Adeemsi sirriin makaa sukkaaraa fi cirrachaa gargar dhiiluuf gargaaru kami?",
+a:[
+"Bulbuluu → dhimbiibuu → hurkisiisuu",
+"Bulbuluu → hurkisiisuu → bulbuluu",
+"Gingilchuu → bulbuluu → dhimbiibuu",
+"Hurkisiisuu → bulbuluu → dhimbiibuu"
+]
+},
+
+{
+q:"Tiyoorii suudoo maatarii kan ta'e kami?",
+a:[
+"Suudowwan garaa garaa amala wal fakkaataa qabu",
+"Suudowwan maatarii gidduu humna waldhiibuutu jira",
+"Sochiin suudotaa tempireechara waliin hariiroo faallaa qaba",
+"Suudowwan maatarii gidduu bakkeewwan maatarii hin qabne ni jiru"
+]
+},
+
+{
+q:"Amaloota faalkaa dhangala'oo kan ta'e kami?",
+a:[
+"Boca mataa isaanii hin qaban",
+"Iddoo murtaawaa hin qabatan",
+"Suudowwan isaanii baay'ee walirraa fagoodha",
+"Sochiin suudotaa daangeffamaadha"
+]
+},
+
+{
+q:"Wanta faalkaa dhangala'oo gara jajjabootti jijjiiruun maal jedhama?",
+a:["Qabbaneessuu","Qorrisiisuu","Baqsuu","Hurkisiisuu"]
+},
+
+{
+q:"Kanneen armaan gadii keessaa dhugaa kan ta'e kami?",
+a:[
+"Qabxiin qorrinaa bishaanii 0°C dha",
+"Qabxiin baqinaa cabbii 0°C dha",
+"Qabxiin danfinaa bishaanii 100°C dha",
+"Hunduu deebiidha"
+]
+},
+
+{
+q:"Tempireecharri murtaawaan jajjaboon gara dhangala'ootti jijjiiramu maal jedhama?",
+a:["Qabxii qorrinaa","Qabxii baqinaa","Qabxii danfinaa","Sablimeeshinii"]
+},
+
+{
+q:"Amaloota sibiilaalotaa keessaa kan ta'e kami?",
+a:[
+"Yammuu tumaman hin caccaban",
+"Giraafaayitii irraa kan hafe hunduu dabarsoo ho'aa fi elektirikaa ti",
+"Biroomiiniin faalkaa dhangala'ootiin argama",
+"Salfariin faalkaa gaasiitiin argama"
+]
+},
+
+{
+q:"Sibiilaalota keessaa teempireechera dareetti dhangala'oo kan ta'e kami?",
+a:["Ayoodinii","Biroominii","Meerkurii","Salfarii"]
+},
+
+{
+q:"Kanneen armaan gadii keessaa makaa gos-tokkee kan ta'e kami?",
+a:["Buna","Dhiiga","Aannan","Hunda"]
+},
+
+{
+q:"Makaa itaanoolii fi bishaanii gargar baasuuf kan oolu kami?",
+a:[
+"Dhullee dhiltuu fayyadamuu",
+"Hurkisiisuu",
+"Dhimbiibuu",
+"Distieeshinii salphaa"
+]
+},
+
+{
+q:"Foormulaa ayiran (II) oksaayidii kan ta'e kami?",
+a:["Fe₂O₃","FeO","Fe₂O","FeO₂"]
+},
+
+{
+q:"Leensiin waantessaa dandeettii guddisee mul'isuu isaa waliin wal simee jiru kami?",
+a:[
+"Abbaa aangoo gadaanaa (10x)",
+"Abbaa aangoo g/galeessaa (20x)",
+"Abbaa aangoo olaanaa (40x)",
+"Cuuphaa zayitaa (400x)"
+]
+},
+
+{
+q:"Caasaalee seelii keessaa sochii waantota gara keessaa fi ala seeliitti raawwatamu kan to'atu kami?",
+a:["Saayitoopilaazimii","Membireenii seelii","Niwukilasii","Cichaa seelii"]
+},
+
+{
+q:"Caasaa seelii biqilootaa ta'ee seelii bineeldotaa keessatti kan hin argamne kami?",
+a:["Vaakiyuulii","Niwukilasii","Cichaa seelii","Membireenii seelii"]
+},
+
+{
+q:"Adeemsa gubama soorataa oksijiinii malee biqiloota keessatti gaggeeffamuun kan uumamu kami?",
+a:[
+"Alkoolii, CO₂ fi anniisaa",
+"Laaktik asiidii fi anniisaa",
+"CO₂, H₂O fi anniisaa",
+"Oksijiinii fi anniisaa"
+]
+},
+
+{
+q:"Canis familiaris maqaa saayinsaawaa maaliiti?",
+a:["Waddeessa","Maangoo","Adurree","Saree"]
+}
+
+];
+
+
+/* ---------- AFAAN OROMOO ---------- */
+
+const oromoQuestions = [
+
+{
+q:"Mucaa dheeraa qal'aan sun obboleessa isaati. Kan jala sararame maali?",
+a:["Gaalee maqaa","Gaalee durduubbee","Gaalee maqibsii","Gaalee gochimaa"]
+},
+
+{
+q:"Gochima hafoo kan ta'e kami?",
+a:["Badhaase","Adamse","Waraabde","Jige"]
+},
+
+{
+q:"'Daree kana seeni.' Kan jala sararame maali?",
+a:["Bamaqaa akeektuu","Gochima","Maqaa","Bamaqa iyyaafannoo"]
+},
+
+{
+q:"Jechi 'lammii' jedhu fufii kam dabalata?",
+a:["-umma","-wwan","-ummaa","-wwaan"]
+},
+
+{
+q:"Qubguddessa sirrii fi sirni tuqaalee iddoo sirriitti galuun kan barreeffame kami?",
+a:[
+"Afaan Oromoo Afrikaa Bahaatti bal'inaan dubbatama",
+"Afaan Oromoo afrikaa bahatti bal'inaan dubbatama.",
+"afaan Oromoo Afrikaa Bahaatti bal'inaan dubbatama.",
+"Afaan Oromoo Afrikaa Bahaatti Bal'inaan dubbatama"
+]
+},
+
+{
+q:"Gochima hafoo kan ta'e kami?",
+a:["du'e","barreesse","dhaabde","haamte"]
+},
+
+{
+q:"Gochima darboo kan ta'e kami?",
+a:["jige","duute","Dhaabe","boqatte"]
+},
+
+{
+q:"Hennaa darbe kan garsiisu kami?",
+a:["deeme","deemuuf","dhufuuf","dhufaa jiru"]
+},
+
+{
+q:"'Mana duuba biqiltuu dhaabuun gaarii dha.' Jechi jala sararame maali?",
+a:["gochima","durduubbee","maqaa","gochibsii"]
+},
+
+{
+q:"'Galaan sangaa diimaa bite.' Kan jala sararame maali?",
+a:["gaalee durduubbee","gaalee maqibsii","gaalee maqaa","gaalee gochimaa"]
+},
+
+{
+q:"'Abbaan koo gabaa deemee kophee naaf bite.' Himni kun maal?",
+a:["hima salphaa","hima xaxamaa","hima dacha xaxamaa","hima dacha"]
+},
+
+{
+q:"Jechoota keessaa jecha tishoo kan ta'e kami?",
+a:["daddaraaroo","dargaggoota","jalbultii","gaaddulleessa"]
+},
+
+{
+q:"Galtee jechuun maal?",
+a:["bu'aa","Ciicata","Dhuftee","Galii"]
+},
+
+{
+q:"Sore jechuun maal?",
+a:["Roobe","Nyaate","Soorate","Caame"]
+},
+
+{
+q:"Hongee jechuun maal?",
+a:["Beela","Quufa","Abaar","Caama"]
+},
+
+{
+q:"Yaaddoo jechuun maal?",
+a:["Yaaduu","Dhamaatii","Sodaa","Hubaatii"]
+},
+
+{
+q:"Tarraamuu jechuun maal?",
+a:["Naanniga","Dallaa","Hulaa","Eela"]
+},
+
+{
+q:"Gololchuu jechuun maal?",
+a:["Ummata","Naannessuu","Qaanii","Nyaachisuu"]
+},
+
+{
+q:"Shoora jechuun maal?",
+a:["Gahee","Rooba","Shoggoruu","Tiifuu"]
+},
+
+{
+q:"Sokkuu jechuun maal?",
+a:["Baduu","Dhokachuu","Gatuu","Deemuu"]
+}
+
+];
+
+
+/* ---------- ENGLISH ---------- */
+
+const englishQuestions = [
+
+{
+q:"What is the main topic of the passage?",
+a:["Hard work","Smart work","Good work","Difficult work"]
+},
+
+{
+q:"Which one is NOT true about smart work?",
+a:[
+"Goals are accomplished faster",
+"It uses more brain",
+"It uses more physical effort",
+"It uses less physical effort"
+]
+},
+
+{
+q:"Smart work needs ______.",
+a:["Time management","More physical stress","More money","Less planning"]
+},
+
+{
+q:"Effort means ______.",
+a:["Power","Desire","Participate","Ensure"]
+},
+
+{
+q:"Technique means ______.",
+a:["Strange","Complex","Method or skill","Unique"]
+},
+
+{
+q:"A: ______ specific things do you do in your class?",
+a:["Why","What","Where","When"]
+},
+
+{
+q:"A: ______ subject do you like to read most?",
+a:["When","Which","How","Why"]
+},
+
+{
+q:"A: ______ are you waiting for?",
+a:["Who","Which","How","Whom"]
+},
+
+{
+q:"A: ______ you mind if I ask you for some advice?",
+a:["Can","Do","Are","Was"]
+},
+
+{
+q:"A: What kind of car ______ I buy?",
+a:["Can","May","Should","Must"]
+},
+
+{
+q:"The plane ______ when I got to the airport.",
+a:["has left","had already left","was left","have left"]
+},
+
+{
+q:"I ______ Mathematics last Saturday.",
+a:["studied","study","studying","studies"]
+},
+
+{
+q:"If he studies hard, he ______ the exam.",
+a:["would pass","will pass","pass","passed"]
+},
+
+{
+q:"She sometimes ______ poems.",
+a:["write","writing","writes","wrote"]
+},
+
+{
+q:"What is the 'if-clause' of Conditional Type I?",
+a:["Simple Future","Simple Present","Simple Past","Present Perfect"]
+},
+
+{
+q:"When she started to learn English, she had already ______ French.",
+a:["finish","finishing","finishes","finished"]
+},
+
+{
+q:"Which one of the following is an interrogative sentence?",
+a:["I have worked.","Had I worked?","I have not worked.","I have written."]
+},
+
+{
+q:"Which one of the following shows passive voice?",
+a:[
+"We love our country.",
+"She is drinking tea.",
+"Furniture is made by workers.",
+"Beka watches films."
+]
+},
+
+{
+q:"The policemen help the children. Which word is the subject?",
+a:["Policemen","Children","The","Help"]
+},
+
+{
+q:"English is ______ by people around the world.",
+a:["speak","spoken","spoke","speaking"]
+}
+
+];
+
+
+/* ==========================================
+   ANSWER KEYS
+========================================== */
+
+/*
+A = 0
+B = 1
+C = 2
+D = 3
+*/
+
+const answerKeys = {
+
+    math:
+    [1,0,0,0,2,1,2,3,2,1,0,0,2,0,1,0,2,0,0,0],
+
+    science:
+    [1,2,2,3,0,3,0,1,3,1,2,1,0,3,1,2,1,2,0,3],
+
+    oromo:
+    [2,3,1,2,0,0,2,0,1,1,3,0,3,2,0,2,0,1,0,1],
+
+    english:
+    [1,2,0,0,2,1,1,3,1,2,1,0,1,2,1,3,1,2,0,1]
+
+};
+
+
+/* ==========================================
+   START EXAM
+========================================== */
+
+function startExam(){
+
+    const name =
+        document.getElementById("studentName")
+        .value.trim();
+
+    const reg =
+        document.getElementById("registrationNumber")
+        .value.trim();
+
+    const code =
+        document.getElementById("examCode")
+        .value.trim();
+
+    const error =
+        document.getElementById("registrationError");
+
+    error.textContent = "";
+
+
+    /* Check empty fields */
+
+    if(!name || !reg || !code){
+
+        error.textContent =
+        "❌ Please fill in all fields.";
+
+        return;
+    }
+
+
+    /* Check exam code */
+
+    if(code !== CORRECT_EXAM_CODE){
+
+        error.textContent =
+        "❌ Invalid Exam Code.";
+
+        return;
+    }
+
+
+    /* Hide registration */
+
+    document
+        .getElementById("registrationPage")
+        .classList.add("hidden");
+
+
+    /* Show exam */
+
+    document
+        .getElementById("examPage")
+        .classList.remove("hidden");
+
+
+    /* Student information */
+
+    document
+        .getElementById("displayName")
+        .textContent = name;
+
+    document
+        .getElementById("displayRegistration")
+        .textContent = reg;
+
+
+    /* Render questions */
+
+    renderQuestions(
+        mathQuestions,
+        "mathQuestions",
+        "math"
+    );
+
+    renderQuestions(
+        scienceQuestions,
+        "scienceQuestions",
+        "science"
+    );
+
+    renderQuestions(
+        oromoQuestions,
+        "oromoQuestions",
+        "oromo"
+    );
+
+    renderQuestions(
+        englishQuestions,
+        "englishQuestions",
+        "english"
+    );
+
+
+    window.scrollTo(0,0);
+}
+
+
+/* ==========================================
+   DISPLAY QUESTIONS
+========================================== */
+
+function renderQuestions(
+    questions,
+    containerId,
+    subject
+){
+
+    const container =
+        document.getElementById(containerId);
+
+    container.innerHTML = "";
+
+
+    questions.forEach(
+        (item,index)=>{
+
+        const qNumber =
+            index + 1;
+
+        let html = `
+
+        <div class="question">
+
+            <p>
+                <strong>
+                    ${qNumber}. ${item.q}
+                </strong>
+            </p>
+        `;
+
+
+        item.a.forEach(
+            (option,optionIndex)=>{
+
+            const letter =
+                String.fromCharCode(
+                    65 + optionIndex
+                );
+
+
+            html += `
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="${subject}${index}"
+                    value="${optionIndex}"
+                >
+
+                ${letter}. ${option}
+
+            </label>
+
+            `;
+
+        });
+
+
+        html += `</div>`;
+
+
+        container.innerHTML += html;
+
+    });
+
+}
+
+
+/* ==========================================
+   CALCULATE SCORE
+========================================== */
+
+function calculateScore(
+    subject,
+    questions
+){
+
+    let score = 0;
+
+
+    questions.forEach(
+        (question,index)=>{
+
+        const selected =
+            document.querySelector(
+                `input[name="${subject}${index}"]:checked`
+            );
+
+
+        if(selected){
+
+            const answer =
+                Number(selected.value);
+
+
+            if(
+                answer ===
+                answerKeys[subject][index]
+            ){
+
+                score++;
+
+            }
+
+        }
+
+    });
+
+
+    return score;
+}
+
+
+/* ==========================================
+   SUBMIT EXAM
+========================================== */
+
+function submitExam(){
+
+    /* Calculate scores */
+
+    const mathScore =
+        calculateScore(
+            "math",
+            mathQuestions
+        );
+
+    const scienceScore =
+        calculateScore(
+            "science",
+            scienceQuestions
+        );
+
+    const oromoScore =
+        calculateScore(
+            "oromo",
+            oromoQuestions
+        );
+
+    const englishScore =
+        calculateScore(
+            "english",
+            englishQuestions
+        );
+
+
+    /* Total */
+
+    const total =
+        mathScore +
+        scienceScore +
+        oromoScore +
+        englishScore;
+
+
+    /* Percentage */
+
+    const percentage =
+        (total / 80) * 100;
+
+
+    /* Student information */
+
+    const name =
+        document.getElementById(
+            "studentName"
+        ).value.trim();
+
+    const reg =
+        document.getElementById(
+            "registrationNumber"
+        ).value.trim();
+
+
+    /* Put results */
+
+    document.getElementById(
+        "resultName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "resultRegistration"
+    ).textContent = reg;
+
+
+    document.getElementById(
+        "mathScore"
+    ).textContent =
+        mathScore + "/20";
+
+
+    document.getElementById(
+        "scienceScore"
+    ).textContent =
+        scienceScore + "/20";
+
+
+    document.getElementById(
+        "oromoScore"
+    ).textContent =
+        oromoScore + "/20";
+
+
+    document.getElementById(
+        "englishScore"
+    ).textContent =
+        englishScore + "/20";
+
+
+    document.getElementById(
+        "totalScore"
+    ).textContent =
+        total + "/80";
+
+
+    document.getElementById(
+        "percentage"
+    ).textContent =
+        percentage.toFixed(2);
+
+
+    /* Status */
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    if(total >= PASS_MARK){
+
+        status.innerHTML = `
+
+            <div class="qualified">
+                🎉 QUALIFIED ✅
+            </div>
+
+            <p>
+                Congratulations!
+                You scored
+                <strong>
+                    ${total}/80
+                </strong>.
+            </p>
+
+            <p>
+                Your percentage is
+                <strong>
+                    ${percentage.toFixed(2)}%
+                </strong>.
+            </p>
+
+        `;
+
+    }else{
+
+        status.innerHTML = `
+
+            <div class="notqualified">
+                ❌ NOT QUALIFIED
+            </div>
+
+            <p>
+                You scored
+                <strong>
+                    ${total}/80
+                </strong>.
+            </p>
+
+            <p>
+                You need at least
+                <strong>
+                    ${PASS_MARK}/80
+                </strong>
+                to qualify.
+            </p>
+
+        `;
+
+    }
+
+
+    /* Hide exam */
+
+    document
+        .getElementById("examPage")
+        .classList.add("hidden");
+
+
+    /* Show result */
+
+    document
+        .getElementById("resultPage")
+        .classList.remove("hidden");
+
+
+    /* Scroll top */
+
+    window.scrollTo(0,0);
+}
+
+</script></body>
+</html>
