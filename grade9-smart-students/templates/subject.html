@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ subject["name"] }} - Grade 9 Smart Students</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            width: 94%;
+            max-width: 900px;
+            margin: 25px auto;
+        }
+
+        .question {
+            background: white;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .question h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        .option {
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #e0f2fe;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #15803d;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 18px;
+            background: #64748b;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📘 {{ subject["name"] }}</h1>
+    <p>Student: {{ student_name }}</p>
+</header>
+
+<div class="container">
+
+    <form method="POST">
+
+        {% for question in questions %}
+
+        <div class="question">
+
+            <h3>
+                Question {{ loop.index }}
+            </h3>
+
+            <p>
+                {{ question["question"] }}
+            </p>
+
+            <label class="option">
+                <input
+                    type="radio"
+                    name="question_{{ question['id'] }}"
+                    value="A"
+                >
+                A. {{ question["option_a"] }}
+            </label>
+
+            <label class="option">
+                <input
+                    type="radio"
+                    name="question_{{ question['id'] }}"
+                    value="B"
+                >
+                B. {{ question["option_b"] }}
+            </label>
+
+            <label class="option">
+                <input
+                    type="radio"
+                    name="question_{{ question['id'] }}"
+                    value="C"
+                >
+                C. {{ question["option_c"] }}
+            </label>
+
+            <label class="option">
+                <input
+                    type="radio"
+                    name="question_{{ question['id'] }}"
+                    value="D"
+                >
+                D. {{ question["option_d"] }}
+            </label>
+
+        </div>
+
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">
+            ✅ Submit Answers
+        </button>
+
+    </form>
+
+    <a href="{{ url_for('subjects') }}" class="back">
+        ⬅️ Back to Subjects
+    </a>
+
+</div>
+
+</body>
+</html>

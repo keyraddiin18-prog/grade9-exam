@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notes | Grade 9 Smart Students</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f766e, #2563eb);
+            color: white;
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .welcome {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .welcome h2 {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .welcome p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 21px;
+            margin: 20px 0 14px;
+        }
+
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: #111827;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            border: 1px solid #e5e7eb;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+        }
+
+        .subject-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .subject-card h3 {
+            font-size: 19px;
+            margin-bottom: 6px;
+        }
+
+        .subject-card p {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .units {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .units.active {
+            display: block;
+        }
+
+        .unit-card {
+            display: block;
+            background: white;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #111827;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .unit-card:hover {
+            border-color: #2563eb;
+            background: #f8fafc;
+        }
+
+        .unit-card strong {
+            display: block;
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .unit-card span {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #2563eb;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 12px;
+            padding: 30px 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <h1>📖 Grade 9 Notes</h1>
+    <p>Grade 9 Smart Students — Learning Materials</p>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>Welcome, {{ student_name }} 👋</h2>
+        <p>Registration Number: {{ registration_number }}</p>
+    </div>
+
+    <!-- SUBJECT LIST -->
+    <div id="subjectSection">
+
+        <h2 class="section-title">📚 Select a Subject</h2>
+
+        <div class="subjects">
+
+            <div class="subject-card" onclick="showUnits('biology')">
+                <div class="subject-icon">🧬</div>
+                <h3>Biology</h3>
+                <p>Biology notes and units</p>
+            </div>
+
+            <div class="subject-card" onclick="showUnits('mathematics')">
+                <div class="subject-icon">📐</div>
+                <h3>Mathematics</h3>
+                <p>Mathematics notes and units</p>
+            </div>
+
+            <div class="subject-card" onclick="showUnits('chemistry')">
+                <div class="subject-icon">⚗️</div>
+                <h3>Chemistry</h3>
+                <p>Chemistry notes and units</p>
+            </div>
+
+            <div class="subject-card" onclick="showUnits('physics')">
+                <div class="subject-icon">⚛️</div>
+                <h3>Physics</h3>
+                <p>Physics notes and units</p>
+            </div>
+
+            <div class="subject-card" onclick="showUnits('english')">
+                <div class="subject-icon">📘</div>
+                <h3>English</h3>
+                <p>English notes and units</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BIOLOGY UNITS -->
+    <div id="biology" class="units">
+
+        <div class="back" onclick="backToSubjects()">← Back to Subjects</div>
+
+        <h2 class="section-title">🧬 Biology</h2>
+
+        <a href="/notes/biology/unit1" class="unit-card">
+            <strong>Biology — Unit 1</strong>
+            <span>Introduction to Biology • Unit 1 Note</span>
+        </a>
+
+    </div>
+
+
+    <!-- MATHEMATICS UNITS -->
+    <div id="mathematics" class="units">
+
+        <div class="back" onclick="backToSubjects()">← Back to Subjects</div>
+
+        <h2 class="section-title">📐 Mathematics</h2>
+
+        <a href="/notes/mathematics/unit1" class="unit-card">
+            <strong>Mathematics — Unit 1</strong>
+            <span>Further on Sets Part 1 • Unit 1 Note</span>
+        </a>
+
+    </div>
+
+
+    <!-- CHEMISTRY UNITS -->
+    <div id="chemistry" class="units">
+
+        <div class="back" onclick="backToSubjects()">← Back to Subjects</div>
+
+        <h2 class="section-title">⚗️ Chemistry</h2>
+
+        <div class="unit-card">
+            <strong>Chemistry — Unit 1</strong>
+            <span>Unit 1 Note — Coming soon</span>
+        </div>
+
+    </div>
+
+
+    <!-- PHYSICS UNITS -->
+    <div id="physics" class="units">
+
+        <div class="back" onclick="backToSubjects()">← Back to Subjects</div>
+
+        <h2 class="section-title">⚛️ Physics</h2>
+
+        <div class="unit-card">
+            <strong>Physics — Unit 1</strong>
+            <span>Unit 1 Note — Coming soon</span>
+        </div>
+
+    </div>
+
+
+    <!-- ENGLISH UNITS -->
+    <div id="english" class="units">
+
+        <div class="back" onclick="backToSubjects()">← Back to Subjects</div>
+
+        <h2 class="section-title">📘 English</h2>
+
+        <div class="unit-card">
+            <strong>English — Unit 1</strong>
+            <span>Unit 1 Note — Coming soon</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 Grade 9 Smart Students
+</div>
+
+
+<script>
+
+function showUnits(subject) {
+
+    document.getElementById("subjectSection").style.display = "none";
+
+    document.querySelectorAll(".units").forEach(function(unit) {
+        unit.classList.remove("active");
+    });
+
+    document.getElementById(subject).classList.add("active");
+}
+
+
+function backToSubjects() {
+
+    document.querySelectorAll(".units").forEach(function(unit) {
+        unit.classList.remove("active");
+    });
+
+    document.getElementById("subjectSection").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>

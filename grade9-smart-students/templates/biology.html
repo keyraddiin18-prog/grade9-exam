@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biology Notes | Grade 9 Smart Students</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f766e, #2563eb);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            opacity: .9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.07);
+        }
+
+        .unit {
+            display: block;
+            background: white;
+            padding: 22px;
+            margin-bottom: 15px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #172033;
+            box-shadow: 0 4px 15px rgba(0,0,0,.07);
+            border-left: 5px solid #0f766e;
+            transition: .2s;
+        }
+
+        .unit:hover {
+            transform: translateY(-2px);
+        }
+
+        .unit h2 {
+            margin: 0 0 8px;
+            color: #0f766e;
+        }
+
+        .unit p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 18px;
+            background: #172033;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🧬 Biology</h1>
+    <p>Grade 9 Smart Students — Learning Notes</p>
+</div>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>📚 Biology Units</h2>
+
+        {% if student_name %}
+            <p>
+                Welcome, <strong>{{ student_name }}</strong> 👋
+            </p>
+        {% endif %}
+    </div>
+
+    <!-- UNIT 1 -->
+    <a href="{{ url_for('biology_unit1') }}" class="unit">
+        <h2>📖 Unit 1 — Introduction to Biology</h2>
+        <p>
+            Definition of Biology, characteristics of living things,
+            scientific method, tools of biologists, microscope and laboratory safety.
+        </p>
+    </a>
+
+    <a href="{{ url_for('notes') }}" class="back">
+        ← Back to Subjects
+    </a>
+
+</div>
+
+<footer>
+    🎓 Grade 9 Smart Students<br>
+    Online Learning & Examination System
+</footer>
+
+</body>
+</html>

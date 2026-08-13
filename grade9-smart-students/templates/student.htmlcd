@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade 9 Smart Students</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef4ff, #f8fafc);
+            color: #0f172a;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1050px;
+            margin: 30px auto;
+        }
+
+        .welcome {
+            background: white;
+            padding: 24px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(15,23,42,0.08);
+        }
+
+        .welcome h2 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        .welcome p {
+            color: #475569;
+            margin-bottom: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            display: block;
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: #0f172a;
+            box-shadow: 0 7px 20px rgba(15,23,42,0.08);
+            border: 1px solid #e2e8f0;
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(15,23,42,0.14);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .subjects {
+            border-top: 4px solid #2563eb;
+        }
+
+        .exam {
+            border-top: 4px solid #16a34a;
+        }
+
+        .results {
+            border-top: 4px solid #7c3aed;
+        }
+
+        .notes {
+            border-top: 4px solid #ea580c;
+        }
+
+        .ranking {
+            border-top: 4px solid #ca8a04;
+        }
+
+        .logout {
+            display: inline-block;
+            margin-top: 25px;
+            background: #dc2626;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 11px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout:hover {
+            background: #b91c1c;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 25px 10px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 23px;
+            }
+
+            .container {
+                width: 94%;
+                margin-top: 20px;
+            }
+
+            .card {
+                padding: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎓 Grade 9 Smart Students</h1>
+    <p>Online Learning & Examination System</p>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>Welcome, {{ student_name }} 👋</h2>
+
+        <p>
+            Registration Number:
+            <strong>{{ registration_number }}</strong>
+        </p>
+    </div>
+
+    <div class="grid">
+
+        <!-- SUBJECTS -->
+        <a href="{{ url_for('subjects') }}" class="card subjects">
+            <h2>📚 Subjects</h2>
+            <p>
+                View your subjects and learning materials.
+            </p>
+        </a>
+
+        <!-- TAKE EXAM -->
+        <a href="{{ url_for('subjects') }}" class="card exam">
+            <h2>📝 Take Exam</h2>
+            <p>
+                Take available online examinations.
+            </p>
+        </a>
+
+        <!-- MY RESULTS -->
+        <a href="{{ url_for('results') }}" class="card results">
+            <h2>📊 My Results</h2>
+            <p>
+                View your examination results and scores.
+            </p>
+        </a>
+
+        <!-- NOTES -->
+        <a href="{{ url_for('notes') }}" class="card notes">
+            <h2>📖 Notes</h2>
+            <p>
+                Read your learning notes.
+            </p>
+        </a>
+
+        <!-- RANKING -->
+        <a href="{{ url_for('ranking') }}" class="card ranking">
+            <h2>🏆 Ranking / Progress</h2>
+            <p>
+                Check your progress and ranking.
+            </p>
+        </a>
+
+    </div>
+
+    <!-- LOGOUT -->
+    <a href="{{ url_for('logout') }}" class="logout">
+        🚪 Logout
+    </a>
+
+</div>
+
+<footer>
+    © 2026 Grade 9 Smart Students
+</footer>
+
+</body>
+</html>

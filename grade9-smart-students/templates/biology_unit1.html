@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biology Grade 9 - Unit 1</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f766e, #16a34a);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.95;
+        }
+
+        .student {
+            background: white;
+            margin: 15px auto;
+            max-width: 1000px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .back {
+            display: inline-block;
+            text-decoration: none;
+            background: #0f766e;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+
+        .card h2 {
+            color: #0f766e;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+
+        .card h3 {
+            color: #166534;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 8px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .definition {
+            background: #ecfdf5;
+            border-left: 5px solid #16a34a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .important {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .tool {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .tool strong {
+            color: #0f766e;
+        }
+
+        .scientific-step {
+            background: #f0fdf4;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 23px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🧬 BIOLOGY — GRADE 9</h1>
+    <p>UNIT 1 — INTRODUCTION TO BIOLOGY</p>
+</div>
+
+<div class="student">
+    👨‍🎓 <strong>{{ student_name }}</strong>
+    <br>
+    🆔 Registration Number:
+    <strong>{{ registration_number }}</strong>
+</div>
+
+<div class="container">
+
+    <a href="{{ url_for('biology_notes') }}" class="back">
+        ← Back to Biology
+    </a>
+
+
+    <!-- DEFINITION OF BIOLOGY -->
+    <div class="card">
+
+        <h2>1. Definition of Biology</h2>
+
+        <div class="definition">
+            <strong>Biology</strong> is the scientific study of life and living organisms.
+        </div>
+
+        <p>
+            The term <strong>Biology</strong> is derived from two Greek words:
+        </p>
+
+        <ul>
+            <li><strong>Bios</strong> — meaning life</li>
+            <li><strong>Logos</strong> — meaning study or science</li>
+        </ul>
+
+        <h3>Characteristics of Living Things</h3>
+
+        <ol>
+            <li>
+                <strong>Organization:</strong>
+                Living organisms have a complex and organized structure,
+                typically made up of cells.
+            </li>
+
+            <li>
+                <strong>Response to Stimuli:</strong>
+                Living organisms can respond to environmental stimuli
+                or changes.
+            </li>
+
+            <li>
+                <strong>Growth and Development:</strong>
+                Living systems grow and develop according to instructions
+                encoded in their DNA.
+            </li>
+
+            <li>
+                <strong>Reproduction:</strong>
+                Living organisms have the ability to reproduce and pass
+                genetic information to the next generation.
+            </li>
+
+            <li>
+                <strong>Heredity:</strong>
+                Genetic traits are passed from one generation to another
+                through DNA.
+            </li>
+
+            <li>
+                <strong>Metabolism:</strong>
+                Living organisms carry out chemical reactions to transform
+                energy and maintain life.
+            </li>
+
+            <li>
+                <strong>Homeostasis:</strong>
+                Living organisms regulate their internal environment
+                to maintain stable conditions.
+            </li>
+
+            <li>
+                <strong>Adaptation through Evolution:</strong>
+                Organisms can change over generations and become adapted
+                to their environment.
+            </li>
+        </ol>
+
+    </div>
+
+
+    <!-- SCIENTIFIC STUDY -->
+    <div class="card">
+
+        <h2>2. What is a Scientific Study?</h2>
+
+        <div class="definition">
+            A scientific study is a systematic investigation aimed at
+            discovering new knowledge, verifying existing knowledge,
+            or solving specific problems.
+        </div>
+
+        <p>
+            Scientific studies use:
+        </p>
+
+        <ul>
+            <li>Observation</li>
+            <li>Experimentation</li>
+            <li>Data collection</li>
+            <li>Analysis</li>
+            <li>Evidence-based conclusions</li>
+        </ul>
+
+    </div>
+
+
+    <!-- BIOLOGY AND OTHER SCIENCES -->
+    <div class="card">
+
+        <h2>3. Biology and Other Natural Sciences</h2>
+
+        <p>
+            Biology is closely related to other natural sciences.
+            It combines information and methods from different fields
+            to understand life.
+        </p>
+
+        <h3>Biology and Chemistry</h3>
+
+        <p>
+            Understanding elements, molecules and chemical reactions
+            in living organisms requires principles of chemistry.
+        </p>
+
+        <h3>Biology and Physics</h3>
+
+        <p>
+            Biological processes such as photosynthesis involve
+            concepts from both chemistry and physics.
+        </p>
+
+        <div class="important">
+            Biology combines knowledge from different sciences to study
+            living organisms at different levels.
+        </div>
+
+    </div>
+
+
+    <!-- WHY STUDY BIOLOGY -->
+    <div class="card">
+
+        <h2>4. Why Do We Study Biology?</h2>
+
+        <p>
+            Humans naturally seek to understand the world and living
+            organisms.
+        </p>
+
+        <ul>
+            <li>To understand how organisms function.</li>
+            <li>To understand how organisms interact with their environment.</li>
+            <li>To develop medicines for diseases.</li>
+            <li>To advance genetics and cell biology.</li>
+            <li>To improve agriculture.</li>
+            <li>To investigate crimes through forensic biology.</li>
+            <li>To study ecosystems.</li>
+            <li>To understand environmental problems.</li>
+            <li>To produce useful products through fermentation.</li>
+            <li>To help in understanding diseases such as AIDS, tuberculosis and cancer.</li>
+        </ul>
+
+    </div>
+
+
+    <!-- SCIENTIFIC METHOD -->
+    <div class="card">
+
+        <h2>5. The Scientific Method</h2>
+
+        <div class="definition">
+            The scientific method is a structured process used to
+            investigate natural phenomena through observation,
+            hypothesis formation, experimentation and analysis.
+        </div>
+
+        <p>
+            Biologists use the scientific method to investigate questions
+            and develop scientific explanations.
+        </p>
+
+        <h3>Steps of the Scientific Method</h3>
+
+        <div class="scientific-step">
+            <strong>1. Observation</strong><br>
+            Noticing and describing a phenomenon or problem.
+        </div>
+
+        <div class="scientific-step">
+            <strong>2. Asking Questions</strong><br>
+            Formulating a clear and focused question.
+        </div>
+
+        <div class="scientific-step">
+            <strong>3. Forming a Hypothesis</strong><br>
+            Proposing a tentative explanation or prediction that can be tested.
+        </div>
+
+        <div class="scientific-step">
+            <strong>4. Testing the Hypothesis</strong><br>
+            Designing and conducting an experiment to test the hypothesis.
+        </div>
+
+        <div class="scientific-step">
+            <strong>5. Data Collection</strong><br>
+            Gathering and recording observations or experimental results.
+        </div>
+
+        <div class="scientific-step">
+            <strong>6. Analysis</strong><br>
+            Interpreting the collected data.
+        </div>
+
+        <div class="scientific-step">
+            <strong>7. Conclusion</strong><br>
+            Drawing conclusions based on the analysis.
+        </div>
+
+        <div class="scientific-step">
+            <strong>8. Communication</strong><br>
+            Sharing results with the scientific community for review
+            and possible replication.
+        </div>
+
+    </div>
+
+
+    <!-- TOOLS OF BIOLOGIST -->
+    <div class="card">
+
+        <h2>6. Tools of a Biologist</h2>
+
+        <p>
+            Biologists use different tools for observation, measurement,
+            experimentation and culturing.
+        </p>
+
+        <h3>Laboratory Tools</h3>
+
+        <div class="tool">
+            <strong>1. Hand Lens</strong>
+            <p>
+                A convex lens with a loop and handle used to produce
+                an enlarged image of objects.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>2. Microscope</strong>
+            <p>
+                Used to study objects that are too small to be seen
+                with the naked eye.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>3. Glass Slides and Cover Slips</strong>
+            <p>
+                Slides support specimens and cover slips cover the specimens.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>4. Autoclave</strong>
+            <p>
+                Used to sterilize contaminated materials using high
+                temperature and pressure.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>5. Incubator</strong>
+            <p>
+                Maintains a specific environment and temperature
+                for culturing.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>6. Petri Dish</strong>
+            <p>
+                Used for microbiological work, including culturing
+                microorganisms and cells.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>7. Culture Tubes</strong>
+            <p>
+                Used to culture microorganisms.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>8. Flasks</strong>
+            <p>
+                Used for mixing solutions and producing large populations
+                of microorganisms.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>9. Balance</strong>
+            <p>
+                Used to measure the mass of an object.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>10. Dropper</strong>
+            <p>
+                Used to control the amount of solution being added.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>11. Tongs</strong>
+            <p>
+                Used to lift or pick up hot objects.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>12. Dissecting Tool Kit</strong>
+            <p>
+                Contains tools used to dissect animals.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>13. Dissecting Pan</strong>
+            <p>
+                A tool on which an animal is kept during dissection.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>14. Crucible</strong>
+            <p>
+                Made from ceramic or metal and used for heating or
+                melting substances at high temperatures.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>15. Beaker</strong>
+            <p>
+                Used for preparing solutions and holding liquids.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>16. Hot Plate</strong>
+            <p>
+                Used for heating solutions.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>17. pH Meter</strong>
+            <p>
+                Used to measure the pH of substances.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>18. Thermometer</strong>
+            <p>
+                Used to measure temperature.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>19. Forceps</strong>
+            <p>
+                Used to hold or pick up small objects.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>20. Spatula</strong>
+            <p>
+                Used to mix substances into a solution.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>21. Wash Bottle</strong>
+            <p>
+                Used to rinse laboratory materials.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>22. Bunsen Burner / Alcohol Burner</strong>
+            <p>
+                Used for heating and sterilization.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- FIELD TOOLS -->
+    <div class="card">
+
+        <h2>7. Field Tools</h2>
+
+        <div class="tool">
+            <strong>1. Insect Net</strong>
+            <p>
+                Used to collect insects.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>2. Fishing Net</strong>
+            <p>
+                Used for collecting fish.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- LIGHT MICROSCOPE -->
+    <div class="card">
+
+        <h2>8. The Light Microscope</h2>
+
+        <p>
+            A microscope is an instrument used to observe objects
+            that are too small to be seen clearly with the naked eye.
+        </p>
+
+        <h3>Types of Microscopes</h3>
+
+        <ul>
+            <li>
+                <strong>Light Microscope:</strong>
+                Uses a beam of light to view specimens.
+            </li>
+
+            <li>
+                <strong>Electron Microscope:</strong>
+                Uses electrons and electromagnets and provides much
+                higher magnification.
+            </li>
+        </ul>
+
+        <h3>Types of Light Microscope</h3>
+
+        <ol>
+            <li>
+                <strong>Simple Light Microscope:</strong>
+                Consists of a single lens.
+            </li>
+
+            <li>
+                <strong>Compound Light Microscope:</strong>
+                Consists of two or more glass lenses.
+            </li>
+        </ol>
+
+        <div class="important">
+            The compound microscope is the most common microscope
+            used in biology.
+        </div>
+
+    </div>
+
+
+    <!-- MICROSCOPE PARTS -->
+    <div class="card">
+
+        <h2>9. Parts and Functions of a Light Microscope</h2>
+
+        <div class="tool">
+            <strong>1. Eyepiece (Ocular)</strong>
+            <p>
+                Used to look through the microscope.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>2. Eyepiece Tube</strong>
+            <p>
+                Holds the eyepiece.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>3. Objective Lenses</strong>
+            <p>
+                Provide different levels of magnification.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>4. Arm</strong>
+            <p>
+                Supports the microscope and connects major components.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>5. Body Tube</strong>
+            <p>
+                Connects the eyepiece to the objective lenses.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>6. Nosepiece</strong>
+            <p>
+                Rotating part that holds the objective lenses.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>7. Adjustment Knobs</strong>
+            <p>
+                Used to focus the microscope.
+            </p>
+            <ul>
+                <li>
+                    <strong>Coarse adjustment:</strong>
+                    Brings the specimen into general focus.
+                </li>
+                <li>
+                    <strong>Fine adjustment:</strong>
+                    Produces a sharper focus.
+                </li>
+            </ul>
+        </div>
+
+        <div class="tool">
+            <strong>8. Stage</strong>
+            <p>
+                The platform on which the specimen is placed.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>9. Stage Clip</strong>
+            <p>
+                Holds the glass slide in position.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>10. Aperture</strong>
+            <p>
+                An opening in the stage that allows light to reach
+                the specimen.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>11. Microscopic Illuminator</strong>
+            <p>
+                The light source of the microscope.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>12. Condenser</strong>
+            <p>
+                Collects and focuses light onto the specimen.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>13. Diaphragm (Iris)</strong>
+            <p>
+                Controls the amount of light reaching the specimen.
+            </p>
+        </div>
+
+        <div class="tool">
+            <strong>14. Base</strong>
+            <p>
+                The bottom part that supports the microscope.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- HANDLING MICROSCOPE -->
+    <div class="card">
+
+        <h2>10. Handling and Using a Light Microscope</h2>
+
+        <ol>
+            <li>Carry the microscope properly.</li>
+            <li>Use a clean and dry slide.</li>
+            <li>Never touch the lens surfaces.</li>
+            <li>Place the slide in the middle of the stage.</li>
+            <li>Always begin focusing with low power.</li>
+            <li>Use the coarse adjustment first.</li>
+            <li>Use fine adjustment to obtain a clear image.</li>
+            <li>Lower the stage before removing the slide.</li>
+            <li>Clean the microscope after use.</li>
+            <li>Use lens paper to clean microscope lenses.</li>
+            <li>Return the 4× objective over the stage.</li>
+            <li>Turn off the microscope light.</li>
+            <li>Return the microscope to its proper cabinet.</li>
+            <li>Wrap the power cord correctly.</li>
+        </ol>
+
+    </div>
+
+
+    <!-- LAB SAFETY -->
+    <div class="card">
+
+        <h2>11. General Laboratory Safety Rules</h2>
+
+        <div class="important">
+            Laboratory safety is important before, during and after
+            laboratory activities.
+        </div>
+
+        <ol>
+            <li>Follow laboratory instructions.</li>
+            <li>Know the location of safety equipment.</li>
+            <li>Dress appropriately for laboratory work.</li>
+            <li>Never eat or drink in the laboratory.</li>
+            <li>Never taste or sniff chemicals.</li>
+            <li>Act responsibly in the laboratory.</li>
+            <li>Keep the laboratory area clean.</li>
+            <li>Store laboratory waste properly.</li>
+            <li>Handle chemicals properly.</li>
+            <li>Know what to do in case of laboratory accidents.</li>
+            <li>Always give priority to safety and chemical hygiene.</li>
+        </ol>
+
+    </div>
+
+
+    <!-- QUICK REVIEW -->
+    <div class="card">
+
+        <h2>📝 Quick Review</h2>
+
+        <div class="definition">
+            <strong>Biology:</strong>
+            Scientific study of life and living organisms.
+        </div>
+
+        <div class="definition">
+            <strong>Scientific Method:</strong>
+            A systematic process used to investigate natural phenomena.
+        </div>
+
+        <div class="definition">
+            <strong>Microscope:</strong>
+            An instrument used to observe objects that are too small
+            to be seen clearly with the naked eye.
+        </div>
+
+        <div class="definition">
+            <strong>Homeostasis:</strong>
+            Regulation of the internal environment to maintain
+            stable conditions.
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    🧬 Grade 9 Smart Students — Biology Unit 1
+    <br>
+    Online Learning & Examination System
+</div>
+
+</body>
+</html>

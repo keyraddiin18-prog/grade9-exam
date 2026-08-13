@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade 9 Smart Students | Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: linear-gradient(135deg, #0f3d91, #1769e0);
+            color: white;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.18);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .brand p {
+            margin: 4px 0 0;
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .logout-top {
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: 30px auto;
+        }
+
+        /* ================= WELCOME ================= */
+
+        .welcome {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(15,23,42,0.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .welcome h2 {
+            margin: 0 0 8px;
+            font-size: 25px;
+            color: #172033;
+        }
+
+        .welcome p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        .student-id {
+            background: #eef5ff;
+            color: #1769e0;
+            padding: 12px 17px;
+            border-radius: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title {
+            margin: 0 0 15px;
+            font-size: 19px;
+            color: #172033;
+        }
+
+        /* ================= MENU ================= */
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+        }
+
+        .menu-card {
+            position: relative;
+            background: white;
+            border-radius: 18px;
+            padding: 23px;
+            text-decoration: none;
+            color: #172033;
+            border: 1px solid #e6ebf2;
+            box-shadow: 0 7px 22px rgba(15,23,42,0.06);
+            transition: all 0.25s ease;
+            overflow: hidden;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(15,23,42,0.12);
+        }
+
+        .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 17px;
+        }
+
+        .menu-card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .menu-card p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .arrow {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        /* CARD COLORS */
+
+        .blue .icon {
+            background: #e8f1ff;
+        }
+
+        .green .icon {
+            background: #e8f8ef;
+        }
+
+        .purple .icon {
+            background: #f1eaff;
+        }
+
+        .orange .icon {
+            background: #fff0e6;
+        }
+
+        .gold .icon {
+            background: #fff7d6;
+        }
+
+        /* ================= QUICK INFO ================= */
+
+        .info-box {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #172033, #263b63);
+            color: white;
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .info-box h3 {
+            margin: 0 0 7px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .info-icon {
+            font-size: 40px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 30px 10px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 17px 5%;
+            }
+
+            .brand h1 {
+                font-size: 17px;
+            }
+
+            .brand p {
+                font-size: 11px;
+            }
+
+            .logout-top {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .container {
+                width: 92%;
+                margin-top: 20px;
+            }
+
+            .welcome {
+                display: block;
+                padding: 22px;
+            }
+
+            .welcome h2 {
+                font-size: 21px;
+            }
+
+            .student-id {
+                display: inline-block;
+                margin-top: 15px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .menu-card {
+                padding: 18px;
+            }
+
+            .icon {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+
+            .menu-card h3 {
+                font-size: 15px;
+            }
+
+            .menu-card p {
+                font-size: 12px;
+            }
+
+            .arrow {
+                right: 14px;
+                bottom: 14px;
+            }
+
+            .info-box {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="brand">
+
+        <div class="logo">
+            🎓
+        </div>
+
+        <div>
+            <h1>Grade 9 Smart Students</h1>
+            <p>Online Learning & Examination System</p>
+        </div>
+
+    </div>
+
+    <a
+        href="{{ url_for('logout') }}"
+        class="logout-top"
+    >
+        Logout
+    </a>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <div>
+
+            <h2>
+                Welcome, {{ student_name }} 👋
+            </h2>
+
+            <p>
+                Continue your learning journey and check your progress.
+            </p>
+
+        </div>
+
+        <div class="student-id">
+
+            🆔 {{ registration_number }}
+
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <h2 class="section-title">
+        Student Portal
+    </h2>
+
+
+    <div class="menu-grid">
+
+
+        <!-- SUBJECTS -->
+
+        <a
+            href="{{ url_for('subjects') }}"
+            class="menu-card blue"
+        >
+
+            <div class="icon">
+                📚
+            </div>
+
+            <h3>
+                Subjects
+            </h3>
+
+            <p>
+                Explore subjects, questions and learning materials.
+            </p>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- EXAM -->
+
+        <a
+            href="{{ url_for('subjects') }}"
+            class="menu-card green"
+        >
+
+            <div class="icon">
+                📝
+            </div>
+
+            <h3>
+                Take Exam
+            </h3>
+
+            <p>
+                Choose a subject and take an online examination.
+            </p>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- RESULTS -->
+
+        <a
+            href="{{ url_for('results') }}"
+            class="menu-card purple"
+        >
+
+            <div class="icon">
+                📊
+            </div>
+
+            <h3>
+                My Results
+            </h3>
+
+            <p>
+                View your examination scores and qualification status.
+            </p>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- NOTES -->
+
+        <a
+            href="{{ url_for('notes') }}"
+            class="menu-card orange"
+        >
+
+            <div class="icon">
+                📖
+            </div>
+
+            <h3>
+                Notes
+            </h3>
+
+            <p>
+                Read educational notes and study materials.
+            </p>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
+
+
+        <!-- RANKING -->
+
+        <a
+            href="{{ url_for('ranking') }}"
+            class="menu-card gold"
+        >
+
+            <div class="icon">
+                🏆
+            </div>
+
+            <h3>
+                Ranking & Progress
+            </h3>
+
+            <p>
+                Check your performance and ranking among students.
+            </p>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- INFORMATION -->
+
+    <div class="info-box">
+
+        <div>
+
+            <h3>
+                💡 Keep Learning
+            </h3>
+
+            <p>
+                Study regularly, take your exams and track your progress.
+            </p>
+
+        </div>
+
+        <div class="info-icon">
+            🚀
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Grade 9 Smart Students
+
+</footer>
+
+
+</body>
+</html>

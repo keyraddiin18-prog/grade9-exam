@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exam Result | Grade 9 Smart Students</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                linear-gradient(135deg, rgba(10, 30, 60, 0.92), rgba(0, 120, 180, 0.85)),
+                url("https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        .result-card {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+        }
+
+        .logo {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0066ff, #00b4d8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin: 5px 0;
+            font-size: 30px;
+            color: #102a43;
+        }
+
+        .subtitle {
+            color: #66788a;
+            margin-bottom: 25px;
+        }
+
+        .student-info {
+            background: #f3f7fb;
+            border-radius: 15px;
+            padding: 18px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .student-info p {
+            margin: 9px 0;
+            color: #334e68;
+        }
+
+        .student-info strong {
+            color: #102a43;
+        }
+
+        .score-box {
+            background: linear-gradient(135deg, #0066ff, #00a8cc);
+            color: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .score {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .percentage {
+            font-size: 22px;
+        }
+
+        .status {
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 23px;
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+
+        .qualified {
+            background: #d9f7e5;
+            color: #087443;
+            border: 2px solid #8ed9ae;
+        }
+
+        .not-qualified {
+            background: #ffe1e1;
+            color: #b42318;
+            border: 2px solid #f2a3a3;
+        }
+
+        .message {
+            color: #52606d;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #0066ff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #004dcc;
+        }
+
+        .btn-secondary {
+            background: #e8eef5;
+            color: #243b53;
+        }
+
+        .btn-secondary:hover {
+            background: #d7e2ec;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #829ab1;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .result-card {
+                padding: 25px 18px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .score {
+                font-size: 36px;
+            }
+
+            .percentage {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="result-card">
+
+    <div class="logo">
+        G9
+    </div>
+
+    <h1>Exam Result</h1>
+
+    <div class="subtitle">
+        Grade 9 Smart Students
+    </div>
+
+    <div class="student-info">
+
+        <p>
+            <strong>Student:</strong>
+            {{ student_name }}
+        </p>
+
+        <p>
+            <strong>Registration No:</strong>
+            {{ registration_number }}
+        </p>
+
+        <p>
+            <strong>Subject:</strong>
+            {{ subject["name"] }}
+        </p>
+
+    </div>
+
+    <div class="score-box">
+
+        <div class="score">
+            {{ score }} / {{ total_questions }}
+        </div>
+
+        <div class="percentage">
+            {{ percentage }}%
+        </div>
+
+    </div>
+
+    {% if status == "Qualified" %}
+
+        <div class="status qualified">
+            ✅ QUALIFIED
+        </div>
+
+        <div class="message">
+            Congratulations! You achieved the required
+            <strong>55% or above</strong>.
+        </div>
+
+    {% else %}
+
+        <div class="status not-qualified">
+            ❌ NOT QUALIFIED
+        </div>
+
+        <div class="message">
+            Your score is below the required
+            <strong>55%</strong>. Keep studying and try again.
+        </div>
+
+    {% endif %}
+
+    <div class="buttons">
+
+        <a href="{{ url_for('subjects') }}"
+           class="btn btn-primary">
+            📚 Back to Subjects
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="btn btn-secondary">
+            🚪 Logout
+        </a>
+
+    </div>
+
+    <div class="footer">
+        © 2026 Grade 9 Smart Students
+    </div>
+
+</div>
+
+</body>
+</html>

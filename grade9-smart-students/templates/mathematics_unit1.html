@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade 9 Mathematics - Unit 1</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 25px 18px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        header p {
+            margin: 7px 0 0;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 20px auto;
+            padding: 0 14px;
+        }
+
+        .student-card {
+            background: white;
+            padding: 17px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .student-card strong {
+            color: #2563eb;
+        }
+
+        .title-card {
+            background: white;
+            padding: 22px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .title-card h2 {
+            margin: 0;
+            color: #2563eb;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #1d4ed8;
+            border-bottom: 2px solid #dbeafe;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        .section h3 {
+            color: #2563eb;
+        }
+
+        .definition {
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 14px;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        .example {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 14px;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        .formula {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 14px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-weight: bold;
+        }
+
+        .question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 12px 0;
+        }
+
+        .answer {
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        .math {
+            font-family: "Times New Roman", serif;
+            font-size: 18px;
+        }
+
+        .back {
+            display: inline-block;
+            background: #172033;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin: 10px 0 30px;
+        }
+
+        .back:hover {
+            background: #334155;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 21px;
+            }
+
+            .section {
+                padding: 16px;
+            }
+
+            .title-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📐 Grade 9 Mathematics</h1>
+    <p>Unit 1 — Further on Sets</p>
+</header>
+
+<div class="container">
+
+    <!-- STUDENT -->
+    <div class="student-card">
+        👨‍🎓 <strong>Student:</strong> {{ student_name }}<br>
+        🆔 <strong>Registration Number:</strong> {{ registration_number }}
+    </div>
+
+    <!-- TITLE -->
+    <div class="title-card">
+        <h2>GRADE 9 MATHEMATICS</h2>
+        <p><strong>UNIT 1 — FURTHER ON SETS</strong></p>
+        <p>📚 Complete Learning Note</p>
+    </div>
+
+
+    <!-- PART 1 -->
+    <div class="section">
+
+        <h2>1.1 Description of the Concept Set</h2>
+
+        <div class="definition">
+            <strong>Definition:</strong><br>
+            A set is a collection of well-defined objects or elements.
+        </div>
+
+        <p>
+            The phrase <strong>well-defined</strong> means that for any given
+            object, we can clearly decide whether it belongs to the set or not.
+        </p>
+
+        <h3>Important Notation</h3>
+
+        <ul>
+            <li>Sets are usually represented by capital letters such as A, B, C, X, Y and Z.</li>
+            <li>Elements are represented by small letters such as a, b, c, x, y and z.</li>
+            <li>If a is an element of set A: <span class="math">a ∈ A</span></li>
+            <li>If b is not an element of A: <span class="math">b ∉ A</span></li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong><br>
+            Let A be the set of vowels in the English alphabet.<br><br>
+
+            <span class="math">i ∈ A</span><br>
+            <span class="math">o ∈ A</span><br>
+            <span class="math">b ∉ A</span>
+        </div>
+
+        <h3>Well-defined and Not Well-defined Sets</h3>
+
+        <div class="example">
+            <strong>Well-defined:</strong>
+            The set of students in your class.
+            All members can be clearly identified.
+        </div>
+
+        <div class="definition">
+            <strong>Not well-defined:</strong>
+            The collection of handsome boys in your school.
+            There is no exact rule to decide who is handsome.
+        </div>
+
+    </div>
+
+
+    <!-- SET DESCRIPTION -->
+    <div class="section">
+
+        <h2>1.1.1 Set Description</h2>
+
+        <p>Sets can be described in four main ways:</p>
+
+        <h3>i. Verbal Method (Statement Form)</h3>
+
+        <p>
+            The elements of the set are described using words or an English statement.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong><br>
+            The set of all even natural numbers less than 10.
+        </div>
+
+
+        <h3>ii. Complete Listing Method (Roster Method)</h3>
+
+        <p>
+            All elements of the set are listed, separated by commas and enclosed
+            in braces { }.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong><br><br>
+
+            Even positive integers less than 7:
+            <br><br>
+
+            <span class="math">{2, 4, 6}</span>
+
+            <br><br>
+
+            Vowels:
+            <br>
+
+            <span class="math">{a, e, i, o, u}</span>
+        </div>
+
+
+        <h3>iii. Partial Listing Method</h3>
+
+        <p>
+            This method is used when listing all elements is difficult or impossible.
+            A few elements are listed to show the pattern.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong><br>
+
+            Natural numbers less than 100:
+            <br><br>
+
+            <span class="math">
+                A = {1, 2, 3, …, 99}
+            </span>
+
+            <br><br>
+
+            Whole numbers:
+            <br>
+
+            <span class="math">
+                W = {0, 1, 2, 3, …}
+            </span>
+        </div>
+
+
+        <h3>iv. Set Builder Method</h3>
+
+        <div class="definition">
+            The set-builder method describes a set by a property or condition
+            that its members must satisfy.
+        </div>
+
+        <p>
+            A representative element and its condition are written inside braces.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong><br>
+
+            <span class="math">
+                A = {1, 2, 3, …, 10}
+            </span>
+
+            <br><br>
+
+            Set-builder form:
+
+            <br>
+
+            <span class="math">
+                A = {x : x ∈ N and x &lt; 11}
+            </span>
+        </div>
+
+    </div>
+
+
+    <!-- PART 2 -->
+    <div class="section">
+
+        <h2>📝 Questions on Description of Sets</h2>
+
+        <div class="question">
+            <strong>1.</strong>
+            Let A = {1, 2, 3, 4, 5, 6}. Which statement is correct?
+            <br><br>
+            A. 5 ∉ A, 8 ∈ A, 0 ∈ A<br>
+            B. 5 ∈ A, 8 ∈ A, 0 ∉ A<br>
+            C. 5 ∈ A, 8 ∉ A, 0 ∉ A<br>
+            D. 5 ∉ A, 8 ∉ A, 0 ∈ A
+
+            <p class="answer">Answer: C</p>
+        </div>
+
+        <div class="question">
+            <strong>2.</strong>
+            M = {2, 3, 5, 7, 11, 13}. Which statement best describes M?
+            <br><br>
+            A. Even numbers less than 15<br>
+            B. Odd numbers less than 15<br>
+            C. Prime numbers less than 15<br>
+            D. Multiples of 3
+
+            <p class="answer">Answer: C</p>
+        </div>
+
+        <div class="question">
+            <strong>3.</strong>
+            E = {1, 3, 5, …, 99}. What is E?
+            <br><br>
+            A. Odd natural numbers up to 99<br>
+            B. Even natural numbers up to 99<br>
+            C. Prime numbers up to 99<br>
+            D. Multiples of 3 up to 99
+
+            <p class="answer">Answer: A</p>
+        </div>
+
+        <div class="question">
+            <strong>4.</strong>
+            D = {1, 3, 5, …}. Which is the correct set-builder form?
+
+            <p class="answer">
+                Answer: C —
+                D = {x ∈ N : x = 2n − 1, n ∈ N}
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- PART 3 -->
+    <div class="section">
+
+        <h2>1.2 The Notion of Sets</h2>
+
+        <h3>1. Empty Set</h3>
+
+        <div class="definition">
+            A set that does not contain any element is called an
+            <strong>empty set</strong>, void set, or null set.
+        </div>
+
+        <p>
+            It is denoted by:
+            <span class="math">∅</span> or <span class="math">{ }</span>
+        </p>
+
+        <div class="example">
+            If A = {x : 1 &lt; x &lt; 2, x is a natural number},
+            then A is an empty set because there is no natural number
+            between 1 and 2.
+        </div>
+
+
+        <h3>2. Finite and Infinite Sets</h3>
+
+        <div class="definition">
+            A set containing a definite number of elements is called a
+            <strong>finite set</strong>.
+        </div>
+
+        <p>
+            A set which is not finite is called an <strong>infinite set</strong>.
+        </p>
+
+        <div class="example">
+            <strong>Examples:</strong><br>
+            • Days in a week → Finite<br>
+            • African countries → Finite<br>
+            • Whole numbers → Infinite<br>
+            • Real numbers → Infinite
+        </div>
+
+
+        <h3>3. Equivalent Sets</h3>
+
+        <p>
+            Two sets are equivalent if there is a one-to-one correspondence
+            between their elements.
+        </p>
+
+        <div class="formula">
+            For finite sets:
+            <br>
+            n(A) = n(B)
+        </div>
+
+        <div class="example">
+            A = {1, 2, 3, 4}<br>
+            B = {Red, Blue, Green, Black}<br><br>
+
+            Both contain four elements, so A and B are equivalent.
+        </div>
+
+
+        <h3>4. Equal Sets</h3>
+
+        <p>
+            Two sets are equal if they contain exactly the same elements.
+            The order does not matter.
+        </p>
+
+        <div class="example">
+            A = {1, 2, 3, 4}<br>
+            B = {4, 3, 2, 1}<br><br>
+
+            Therefore:
+            <strong>A = B</strong>
+        </div>
+
+
+        <h3>5. Subsets</h3>
+
+        <div class="definition">
+            A set A is a subset of B if every element of A is also
+            an element of B.
+        </div>
+
+        <p class="math">
+            A ⊆ B
+        </p>
+
+        <p>
+            If A is not a subset of B:
+        </p>
+
+        <p class="math">
+            A ⊈ B
+        </p>
+
+        <div class="example">
+            If A = {1, 2, 3}, then:
+            <br><br>
+
+            {1, 2} ⊆ A
+        </div>
+
+        <div class="formula">
+            If a set A has n elements, the number of subsets is:
+            <br><br>
+            2ⁿ
+        </div>
+
+
+        <h3>6. Proper Subset</h3>
+
+        <p>
+            A is a proper subset of B if every element of A is in B,
+            but A is not equal to B.
+        </p>
+
+        <p class="math">
+            A ⊂ B
+        </p>
+
+        <div class="example">
+            A = {2, 5, 7}<br>
+            B = {2, 5, 7, 8}<br><br>
+
+            Therefore:
+            <strong>A ⊂ B</strong>
+        </div>
+
+        <div class="formula">
+            Number of proper subsets = 2ⁿ − 1
+        </div>
+
+
+        <h3>7. Power Set</h3>
+
+        <div class="definition">
+            The power set of A is the set of all possible subsets of A,
+            including the empty set and A itself.
+        </div>
+
+        <p class="math">
+            P(A)
+        </p>
+
+        <div class="example">
+            Let A = {1, 2}
+
+            <br><br>
+
+            P(A) = {∅, {1}, {2}, {1,2}}
+
+            <br><br>
+
+            Number of subsets = 2² = 4
+        </div>
+
+    </div>
+
+
+    <!-- OPERATIONS -->
+    <div class="section">
+
+        <h2>1.3 Operations on Sets</h2>
+
+        <h3>Universal Set</h3>
+
+        <p>
+            A universal set U contains all elements under consideration.
+        </p>
+
+
+        <h3>Union of Sets</h3>
+
+        <div class="definition">
+            The union of A and B contains all elements that are in A,
+            in B, or in both.
+        </div>
+
+        <p class="math">
+            A ∪ B = {x : x ∈ A or x ∈ B}
+        </p>
+
+
+        <h3>Intersection of Sets</h3>
+
+        <div class="definition">
+            The intersection contains elements that belong to both A and B.
+        </div>
+
+        <p class="math">
+            A ∩ B = {x : x ∈ A and x ∈ B}
+        </p>
+
+        <div class="example">
+            A = {0, 1, 3, 5, 7}<br>
+            B = {1, 2, 3, 4, 6, 7}
+
+            <br><br>
+
+            A ∪ B = {0, 1, 2, 3, 4, 5, 6, 7}
+
+            <br><br>
+
+            A ∩ B = {1, 3, 7}
+        </div>
+
+
+        <h3>Difference of Sets</h3>
+
+        <p>
+            A − B contains elements that are in A but not in B.
+        </p>
+
+        <p class="math">
+            A − B = {x : x ∈ A and x ∉ B}
+        </p>
+
+
+        <h3>Complement of a Set</h3>
+
+        <p>
+            The complement of A contains all elements in U that are not in A.
+        </p>
+
+        <p class="math">
+            A′ = {x : x ∈ U and x ∉ A}
+        </p>
+
+
+        <h3>Important Laws</h3>
+
+        <div class="formula">
+            (A′)′ = A<br><br>
+            A′ = U − A<br><br>
+            A − B = A ∩ B′<br><br>
+            (A ∪ B)′ = A′ ∩ B′<br><br>
+            (A ∩ B)′ = A′ ∪ B′
+        </div>
+
+    </div>
+
+
+    <!-- VENN -->
+    <div class="section">
+
+        <h2>⭕ Venn Diagrams</h2>
+
+        <p>
+            A Venn diagram is a pictorial representation of sets.
+            Sets are usually represented using circles inside a rectangle
+            representing the universal set.
+        </p>
+
+        <div class="definition">
+            Venn diagrams help us understand union, intersection,
+            difference and complement visually.
+        </div>
+
+    </div>
+
+
+    <!-- SYMMETRIC DIFFERENCE -->
+    <div class="section">
+
+        <h2>Symmetric Difference</h2>
+
+        <p>
+            The symmetric difference between A and B contains elements
+            belonging to A or B, but not both.
+        </p>
+
+        <p class="math">
+            A Δ B = (A − B) ∪ (B − A)
+        </p>
+
+        <div class="example">
+            A = {1, 2, 4, 5, 8}<br>
+            B = {2, 3, 5, 7}
+
+            <br><br>
+
+            A − B = {1, 4, 8}<br>
+            B − A = {3, 7}
+
+            <br><br>
+
+            Therefore:
+
+            <br>
+
+            A Δ B = {1, 3, 4, 7, 8}
+        </div>
+
+    </div>
+
+
+    <!-- CARTESIAN -->
+    <div class="section">
+
+        <h2>Cartesian Product of Two Sets</h2>
+
+        <div class="definition">
+            The Cartesian product A × B is the set of all ordered pairs
+            (a,b) such that a ∈ A and b ∈ B.
+        </div>
+
+        <p class="math">
+            A × B = {(a,b) : a ∈ A and b ∈ B}
+        </p>
+
+        <div class="example">
+            Let:
+
+            <br>
+
+            A = {2, 4, 6}
+
+            <br>
+
+            B = {1, 3}
+
+            <br><br>
+
+            A × B = {
+            (2,1), (2,3),
+            (4,1), (4,3),
+            (6,1), (6,3)
+            }
+        </div>
+
+    </div>
+
+
+    <!-- APPLICATION -->
+    <div class="section">
+
+        <h2>1.4 Application of Sets</h2>
+
+        <p>
+            Sets are used to represent and solve problems involving groups
+            of objects or people with common or overlapping characteristics.
+        </p>
+
+        <p>They are useful in:</p>
+
+        <ul>
+            <li>Surveys</li>
+            <li>Classification of data</li>
+            <li>Probability</li>
+            <li>Comparing groups</li>
+            <li>Finding relationships between groups</li>
+        </ul>
+
+        <div class="formula">
+            n(A ∪ B) = n(A) + n(B) − n(A ∩ B)
+        </div>
+
+        <div class="example">
+            Given:
+
+            <br>
+
+            n(A) = 20
+
+            <br>
+
+            n(B) = 28
+
+            <br>
+
+            n(A ∪ B) = 36
+
+            <br><br>
+
+            Find n(A ∩ B).
+
+            <br><br>
+
+            36 = 20 + 28 − n(A ∩ B)
+
+            <br><br>
+
+            n(A ∩ B) = 48 − 36
+
+            <br><br>
+
+            <strong>n(A ∩ B) = 12</strong>
+        </div>
+
+    </div>
+
+
+    <!-- FINAL -->
+    <div class="section">
+
+        <h2>📌 Unit 1 Quick Review</h2>
+
+        <ul>
+            <li>Set → collection of well-defined objects.</li>
+            <li>∈ → belongs to.</li>
+            <li>∉ → does not belong to.</li>
+            <li>∅ → empty set.</li>
+            <li>⊆ → subset.</li>
+            <li>⊂ → proper subset.</li>
+            <li>P(A) → power set.</li>
+            <li>∪ → union.</li>
+            <li>∩ → intersection.</li>
+            <li>A′ → complement.</li>
+            <li>Δ → symmetric difference.</li>
+            <li>× → Cartesian product.</li>
+        </ul>
+
+        <div class="formula">
+            ⭐ Remember:<br><br>
+            If a set has n elements, number of subsets = 2ⁿ.
+        </div>
+
+    </div>
+
+
+    <a href="/notes" class="back">
+        ← Back to Notes
+    </a>
+
+</div>
+
+</body>
+</html>

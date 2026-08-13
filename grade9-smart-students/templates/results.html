@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Results - Grade 9 Smart Students</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #0f172a;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6d28d9, #7c3aed);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .student-card {
+            background: white;
+            padding: 22px;
+            border-radius: 18px;
+            margin-bottom: 22px;
+            box-shadow: 0 7px 20px rgba(15,23,42,0.08);
+        }
+
+        .student-card h2 {
+            margin-top: 0;
+            color: #6d28d9;
+        }
+
+        .result-card {
+            background: white;
+            padding: 24px;
+            border-radius: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 7px 20px rgba(15,23,42,0.08);
+            border-left: 6px solid #7c3aed;
+        }
+
+        .result-card h2 {
+            margin-top: 0;
+        }
+
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .percentage {
+            font-size: 18px;
+            color: #475569;
+        }
+
+        .qualified {
+            color: #16a34a;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .not-qualified {
+            color: #dc2626;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 7px 20px rgba(15,23,42,0.08);
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 13px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 11px;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 25px 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📊 My Results</h1>
+    <p>Grade 9 Smart Students</p>
+</header>
+
+<div class="container">
+
+    <div class="student-card">
+
+        <h2>🎓 {{ student_name }}</h2>
+
+        <p>
+            Registration Number:
+            <strong>{{ registration_number }}</strong>
+        </p>
+
+    </div>
+
+    {% if results %}
+
+        {% for result in results %}
+
+        <div class="result-card">
+
+            <h2>📚 {{ result["subject_name"] }}</h2>
+
+            <p class="score">
+                Score:
+                {{ result["score"] }} / {{ result["total_questions"] }}
+            </p>
+
+            <p class="percentage">
+                Percentage:
+                <strong>{{ result["percentage"] }}%</strong>
+            </p>
+
+            {% if result["status"] == "Qualified" %}
+
+                <p class="qualified">
+                    ✅ QUALIFIED
+                </p>
+
+            {% else %}
+
+                <p class="not-qualified">
+                    ❌ NOT QUALIFIED
+                </p>
+
+            {% endif %}
+
+            <p>
+                Required qualification:
+                <strong>55%</strong>
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+
+            <h2>📭 No Results Yet</h2>
+
+            <p>
+                You have not completed an examination yet.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+    <a href="{{ url_for('student_dashboard') }}" class="back">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+<footer>
+    © 2026 Grade 9 Smart Students
+</footer>
+
+</body>
+</html>
