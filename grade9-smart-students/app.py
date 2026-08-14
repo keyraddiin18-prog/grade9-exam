@@ -368,83 +368,41 @@ def subject_detail(subject_id):
 def results():
 
     if "student_id" not in session:
-        return redirect(
-            url_for("login")
-        )
+        return redirect(url_for("login"))
 
     conn = get_db()
-
-
-    # =====================================================
-    # CREATE RESULTS TABLE
-    # =====================================================
-
-    conn.execute(
-        """
-        CREATE TABLE IF NOT EXISTS results (
-
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-            student_id INTEGER,
-
-            subject_id INTEGER,
-
-            score INTEGER,
-
-            total_questions INTEGER,
-
-            percentage REAL,
-
-            status TEXT
-        )
-        """
-    )
-
-    conn.commit()
-
-
-    # =====================================================
-    # GET STUDENT RESULTS
-    # =====================================================
 
     student_results = conn.execute(
         """
         SELECT
             results.*,
             subjects.name AS subject_name
-
         FROM results
-
         LEFT JOIN subjects
         ON results.subject_id = subjects.id
-
         WHERE results.student_id = ?
-
+        AND results.id IN (
+            SELECT MAX(r2.id)
+            FROM results r2
+            WHERE r2.student_id = ?
+            GROUP BY r2.subject_id
+        )
         ORDER BY results.id DESC
         """,
         (
             session["student_id"],
+            session["student_id"]
         )
     ).fetchall()
 
     conn.close()
 
-
     return render_template(
         "results.html",
-
         results=student_results,
-
-        student_name=session[
-            "student_name"
-        ],
-
-        registration_number=session[
-            "registration_number"
-        ]
+        student_name=session["student_name"],
+        registration_number=session["registration_number"]
     )
-
-
 # =========================================================
 # NOTES — SUBJECT LIST
 # =========================================================
@@ -578,96 +536,45 @@ def mathematics_unit1():
 def ranking():
 
     if "student_id" not in session:
-        return redirect(
-            url_for("login")
-        )
+        return redirect(url_for("login"))
 
     conn = get_db()
-
-
-    # =====================================================
-    # CREATE RESULTS TABLE
-    # =====================================================
-
-    conn.execute(
-        """
-        CREATE TABLE IF NOT EXISTS results (
-
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-            student_id INTEGER,
-
-            subject_id INTEGER,
-
-            score INTEGER,
-
-            total_questions INTEGER,
-
-            percentage REAL,
-
-            status TEXT
-        )
-        """
-    )
-
-    conn.commit()
-
-
-    # =====================================================
-    # RANKING DATA
-    # =====================================================
 
     ranking_data = conn.execute(
         """
         SELECT
-
             students.full_name,
-
             students.registration_number,
-
-            SUM(results.score)
-            AS total_score,
-
-            SUM(results.total_questions)
-            AS total_questions,
-
+            SUM(latest.score) AS total_score,
+            SUM(latest.total_questions) AS total_questions,
             ROUND(
-                SUM(results.score)
-                * 100.0
-                /
-                NULLIF(
-                    SUM(results.total_questions),
-                    0
-                ),
+                SUM(latest.score) * 100.0 /
+                NULLIF(SUM(latest.total_questions), 0),
                 2
+            ) AS percentage
+        FROM students
+        JOIN (
+            SELECT r.*
+            FROM results r
+            WHERE r.id IN (
+                SELECT MAX(r2.id)
+                FROM results r2
+                GROUP BY r2.student_id, r2.subject_id
             )
-            AS percentage
-
-        FROM results
-
-        JOIN students
-        ON results.student_id = students.id
-
+        ) AS latest
+        ON latest.student_id = students.id
         GROUP BY students.id
-
         ORDER BY percentage DESC
         """
     ).fetchall()
 
     conn.close()
 
-
     return render_template(
         "ranking.html",
-
         ranking=ranking_data,
-
-        student_name=session[
-            "student_name"
-        ]
+        student_name=session["student_name"]
     )
-
-
 # =========================================================
 # LOGOUT
 # =========================================================
