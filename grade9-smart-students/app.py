@@ -120,28 +120,26 @@ def student_dashboard():
 def subjects():
 
     if "student_id" not in session:
-        return redirect(
-            url_for("login")
-        )
+        return redirect(url_for("login"))
 
     conn = get_db()
 
-    subjects_data = conn.execute(
-        """
-        SELECT *
+    subjects_data = conn.execute("""
+        SELECT
+            id,
+            name
         FROM subjects
         ORDER BY id
-        """
-    ).fetchall()
+    """).fetchall()
 
     conn.close()
 
     return render_template(
         "subjects.html",
         subjects=subjects_data,
-        student_name=session["student_name"]
+        student_name=session.get("student_name", ""),
+        registration_number=session.get("registration_number", "")
     )
-
 
 # =========================================================
 # SUBJECT / EXAM
