@@ -28,7 +28,7 @@ def get_db():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return redirect(url_for("login"))
 
 
 # =========================================================
