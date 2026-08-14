@@ -145,40 +145,28 @@ def subjects():
 # SUBJECT / EXAM
 # =========================================================
 
-@app.route(
-    "/subject/<int:subject_id>",
-    methods=["GET", "POST"]
-)
+@app.route("/subject/<int:subject_id>", methods=["GET", "POST"])
 def subject_detail(subject_id):
 
     if "student_id" not in session:
-        return redirect(
-            url_for("login")
-        )
+        return redirect(url_for("login"))
 
     conn = get_db()
 
-    # Get subject
     subject = conn.execute(
-        """
-        SELECT *
-        FROM subjects
-        WHERE id = ?
-        """,
+        "SELECT id, name FROM subjects WHERE id = ?",
         (subject_id,)
     ).fetchone()
 
-    # Subject not found
-    if not subject:
-
+    if subject is None:
         conn.close()
-
         return "Subject not found", 404
 
-    # Get questions
     questions = conn.execute(
         """
-        SELECT *
+        SELECT id, subject_id, question,
+               option_a, option_b, option_c, option_d,
+               correct_answer
         FROM questions
         WHERE subject_id = ?
         ORDER BY id
@@ -186,6 +174,95 @@ def subject_detail(subject_id):
         (subject_id,)
     ).fetchall()
 
+    if request.method == "POST":
+
+        score = 0
+        total_questions = len(questions)
+
+        for q in questions:
+            answer = request.form.get(
+                f"question_{q['id']}",
+                ""
+            ).strip().upper()
+
+            correct = str(
+                q["correct_answer"]
+            ).strip().upper()
+
+            if answer == correct:
+                score += 1
+
+        percentage = (
+            (score / total_questions) * 100
+            if total_questions > 0
+            else 0
+        )
+
+        status = (
+            "Qualified"
+            if percentage >= 55
+            else "Not Qualified"
+        )
+
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS results (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                student_id INTEGER,
+                subject_id INTEGER,
+                score INTEGER,
+                total_questions INTEGER,
+                percentage REAL,
+                status TEXT
+            )
+            """
+        )
+
+        conn.execute(
+            """
+            INSERT INTO results
+            (
+                student_id,
+                subject_id,
+                score,
+                total_questions,
+                percentage,
+                status
+            )
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (
+                session["student_id"],
+                subject_id,
+                score,
+                total_questions,
+                percentage,
+                status
+            )
+        )
+
+        conn.commit()
+        conn.close()
+
+        return render_template(
+            "result.html",
+            subject=subject,
+            score=score,
+            total_questions=total_questions,
+            percentage=round(percentage, 2),
+            status=status,
+            student_name=session["student_name"],
+            registration_number=session["registration_number"]
+        )
+
+    conn.close()
+
+    return render_template(
+        "subject.html",
+        subject=subject,
+        questions=questions,
+        student_name=session["student_name"]
+    )
 
     # =====================================================
     # SUBMIT EXAM
